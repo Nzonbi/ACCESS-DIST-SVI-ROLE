@@ -1,6 +1,6 @@
 ---
 # tasks file for roles/access_port
-- name: Configure access ports (reliable)
+- name: Configure access ports 
   ios_config:
     parents: "interface {{ item.interface }}"
     lines:
