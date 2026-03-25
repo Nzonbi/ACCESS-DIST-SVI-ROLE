@@ -16,7 +16,7 @@
 - name: Configure Distribution Switch
   hosts: distribution
   gather_facts: no
-   tasks:
+  tasks:
     - debug:
         var: trunks
 
