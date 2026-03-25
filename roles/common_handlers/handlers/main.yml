@@ -1,0 +1,5 @@
+---
+# handlers file for roles/common_handlers
+- name: Save config
+  ios_config:
+    save_when: modified

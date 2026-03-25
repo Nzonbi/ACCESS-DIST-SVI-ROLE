@@ -1,0 +1,12 @@
+---
+# tasks file for roles/vlan_config
+- name: Configure VLANs
+  ios_vlans:
+    config:
+      - vlan_id: "{{ item.id }}"
+        name: "{{ item.name }}"
+    state: merged
+  loop: "{{ vlans }}"
+  notify: Save config
+
+

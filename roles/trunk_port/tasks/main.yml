@@ -1,0 +1,12 @@
+---
+# tasks file for roles/trunk_port
+- name: Configure trunk ports (reliable)
+  ios_config:
+    parents: "interface {{ item.interface }}"
+    lines:
+      - switchport trunk encapsulation dot1q
+      - switchport mode trunk
+      - switchport trunk allowed vlan {{ vlans | map(attribute='id') | join(',') }}
+      - no shutdown
+  loop: "{{ trunks[inventory_hostname] }}"
+  notify: Save config

@@ -1,0 +1,16 @@
+---
+# tasks file for roles/svi_config
+- name: Enable Layer 3 routing
+  ios_config:
+    lines:
+      - ip routing
+  notify: Save config
+
+- name: Configure SVIs with IP
+  ios_config:
+    parents: "interface Vlan{{ item.vlan }}"
+    lines:
+      - ip address {{ item.ip }}
+      - no shutdown
+  loop: "{{ svis }}"
+  notify: Save config

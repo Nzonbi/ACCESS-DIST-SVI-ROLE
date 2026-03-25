@@ -1,0 +1,19 @@
+---
+vlans:
+  - { id: 10, name: test1 }
+  - { id: 20, name: test2 }
+
+access_ports:
+  A1:
+    - { interface: Gig0/3, vlan: 10 }
+    - { interface: Gig1/0, vlan: 20 }
+
+trunks:
+  A1:
+    - { interface: Gig0/2 }
+  D1:
+    - { interface: Gig0/3 }
+
+svis:
+  - { vlan: 10, ip: 192.168.10.1 255.255.255.0 }
+  - { vlan: 20, ip: 192.168.20.1 255.255.255.0 }

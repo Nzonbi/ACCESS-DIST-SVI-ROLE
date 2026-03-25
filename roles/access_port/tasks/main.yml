@@ -1,0 +1,11 @@
+---
+# tasks file for roles/access_port
+- name: Configure access ports (reliable)
+  ios_config:
+    parents: "interface {{ item.interface }}"
+    lines:
+      - switchport mode access
+      - switchport access vlan {{ item.vlan }}
+      - no shutdown
+  loop: "{{ access_ports[inventory_hostname] }}"
+  notify: Save config

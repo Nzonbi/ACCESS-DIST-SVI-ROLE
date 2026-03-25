@@ -1,0 +1,24 @@
+---
+- name: Configure Access Switch
+  hosts: access
+  gather_facts: no
+
+  tasks:
+    - debug:
+        var: access_ports
+
+  roles:
+    - common_handlers
+    - vlan_config
+    - access_port
+    - trunk_port
+
+- name: Configure Distribution Switch
+  hosts: distribution
+  gather_facts: no
+
+  roles:
+    - common_handlers
+    - vlan_config
+    - trunk_port
+    - svi_config
