@@ -1,7 +1,7 @@
 {# roles/trunk_config/templates/trunk.j2 #}
 {% for intf in trunks %}
 {{ trunks[inventory_hostname] }}
-interface {{ intf.name }}
+interface {{ intf.names }}
  description {{ intf.description | default('Trunk Link') }}
  switchport mode trunk
  switchport trunk allowed vlan {{ intf.vlans }}
