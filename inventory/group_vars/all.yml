@@ -8,20 +8,6 @@ access_ports:
     - { interface: Gig0/3, vlan: 10 }
     - { interface: Gig1/0, vlan: 20 }
 
-trunks:
-  A1:
-    - names: GigabitEthernet0/1
-      description: "Uplink to dist"
-      vlans: "10,20"
-      native_vlan: 99
-  D1:
-    - names: GigabitEthernet0/1
-      description: "Uplink to Core"
-      vlans: "10,20"
-      native_vlan: 99
-    - names: GigabitEthernet0/2
-      description: "Link to Access"
-      vlans: "10,20"
 
 svis:
   - { vlan: 10, ip: 192.168.10.1 255.255.255.0 }
