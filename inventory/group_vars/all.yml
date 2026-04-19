@@ -9,12 +9,12 @@ access_ports:
     - { interface: Gig1/0, vlan: 20 }
 
 trunks:
-  A1
+  A1:
     - name: GigabitEthernet0/1
       description: "Uplink to dist"
       vlans: "10,20"
       native_vlan: 99
-  D1
+  D1:
     - name: GigabitEthernet0/1
       description: "Uplink to Core"
       vlans: "10,20"
