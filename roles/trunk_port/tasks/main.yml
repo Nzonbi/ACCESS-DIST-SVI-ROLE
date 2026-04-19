@@ -1,12 +1,7 @@
 ---
 # tasks file for roles/trunk_port
-- name: Configure trunk ports (reliable)
-  ios_config:
-    parents: "interface {{ item.interface }}"
-    lines:
-      - switchport trunk encapsulation dot1q
-      - switchport mode trunk
-      - switchport trunk allowed vlan {{ vlans | map(attribute='id') | join(',') }}
-      - no shutdown
-  loop: "{{ trunks[inventory_hostname] }}"
+# roles/trunk_config/tasks/main.yml
+- name: Apply Trunk Configurations
+  ansible.netcommon.cli_config:
+    config: "{{ lookup('template', 'trunk.j2') }}"
   notify: Save config
