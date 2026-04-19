@@ -2,6 +2,6 @@
 # tasks file for roles/trunk_port
 # roles/trunk_config/tasks/main.yml
 - name: Apply Trunk Configurations
-  ansible.netcommon.cli_config:
-    config: "{{ lookup('template', 'trunk.j2') }}"
+  ios_config:
+    src: trunk.j2
   notify: Save config
